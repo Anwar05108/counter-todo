@@ -1,0 +1,78 @@
+<div class="input">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleFormControlInput1"
+      name="title"
+      [(ngModel)]="todoTitle"
+      placeholder="title"
+    />
+  </div>
+  <div class="mb-3">
+    <label
+      for="exampleFormControlTextarea1"
+      class="form-label"
+      [(ngModel)]="todoDescription"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+    ></textarea>
+  </div>
+
+  <button
+    class="btn btn-outline-success"
+    type="submit"
+    click="addTodo(todoTitle,todoDescription)"
+  >
+    Add
+  </button>
+
+  <div class="todos"></div>
+</div>
+<div *ngFor="let todo of todos">
+  <div class="card text-center">
+    <div class="card-header">count of completions {{ todo.count }}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{ todo.title }}</h5>
+      <p class="card-text">
+        {{ todo.description }}
+      </p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="incrementCount(todo.id)"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="todo.count > 0 ? decrementCount(todo.id) : null"
+        >
+          -
+        </button>
+        <!-- <div class="position-absolute top-left">
+          <a class="btn btn-primary" (click)="doneTodo(todo.id)">done</a>
+        </div> -->
+
+        <div class="text-right">
+          <a class="btn btn-danger" (click)="deleteTodo(todo.id)">remove</a>
+        </div>
+      </div>
+      <div class="card-footer text-muted">2 days ago</div>
+    </div>
+  </div>
+  <!-- 
+  <div>
+    <input type="checkbox" (click)="todo.toggle()" [checked]="todo.completed" />
+    <span [ngClass]="{ completed: todo.completed }">{{ todo.title }}</span>
+    <button (click)="removeTodo(todo)">X</button>
+  </div> -->
+</div>
