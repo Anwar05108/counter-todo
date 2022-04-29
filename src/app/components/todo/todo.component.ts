@@ -86,12 +86,13 @@ export class TodoComponent implements OnInit {
     });
   }
 
-  addTodo(title: string, description: string) {
-    console.log(title, description);
+  addTodo() {
+    // console.log(title, description);
+    console.log(this.todoTitle, this.todoDescription);
     this.todos.push({
       id: this.todos.length,
-      title: title,
-      description: description,
+      title: this.todoTitle,
+      description: this.todoDescription,
       completed: false,
       editing: false,
       count: 0,

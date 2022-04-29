@@ -1,8 +1,7 @@
-<div class="input">
+<form (submit)="addTodo()">
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Title</label>
     <input
-      type="email"
       class="form-control"
       id="exampleFormControlInput1"
       name="title"
@@ -11,29 +10,22 @@
     />
   </div>
   <div class="mb-3">
-    <label
-      for="exampleFormControlTextarea1"
-      class="form-label"
-      [(ngModel)]="todoDescription"
+    <label for="exampleFormControlTextarea1" class="form-label"
       >Description</label
     >
     <textarea
       class="form-control"
       id="exampleFormControlTextarea1"
+      name="description"
       rows="3"
+      [(ngModel)]="todoDescription"
     ></textarea>
   </div>
 
-  <button
-    class="btn btn-outline-success"
-    type="submit"
-    click="addTodo(todoTitle,todoDescription)"
-  >
-    Add
-  </button>
+  <button class="btn btn-outline-success" type="submit">Add</button>
 
   <div class="todos"></div>
-</div>
+</form>
 <div *ngFor="let todo of todos">
   <div class="card text-center">
     <div class="card-header">count of completions {{ todo.count }}</div>
